@@ -3,179 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¿Quieres tener una cita conmigo?</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>¿Quieres ser mi novia?</title>
   <style>
-    :root {
-      --bg1: #ffdee9;
-      --bg2: #b5fffc;
-      --primary: #ff4d6d;
-      --accent: #845ec2;
-      --text: #1f2937;
-      --card: #ffffffaa;
-      --shadow: 0 10px 30px rgba(0,0,0,.15);
-    }
-
-    * { box-sizing: border-box }
-    html,body { height: 100% }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 800px at 10% -10%, #ffd6e7 0%, #ffe6ef 35%, transparent 60%),
-        radial-gradient(1200px 800px at 110% 10%, #d6fff9 0%, #e7fffb 40%, transparent 60%),
-        linear-gradient(120deg, var(--bg1), var(--bg2));
-      overflow-x: hidden;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
     }
-
-    .container {
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-    }
-
     .card {
-      background: rgba(255,255,255,.7);
-      backdrop-filter: blur(8px);
-      border: 2px solid rgba(255,255,255,.6);
+      background: #ffffffee;
       border-radius: 24px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      box-shadow: var(--shadow);
-      max-width: 680px;
-      width: 100%;
+      padding: 2.5rem;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      width: 90%;
       position: relative;
     }
-
-    h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 1rem }
-
-    .subtitle { opacity: .8; margin-bottom: 1.25rem }
+    .card h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .card p.subtitle {
+      color: #555;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
 
     .btn-area {
       position: relative;
-      height: 220px;
-      margin-top: .5rem;
-      border-radius: 20px;
-      background: #fff8fc;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
-      overflow: hidden; /* evita que los botones se "salgan" visualmente */
-      display:block;
+      height: 200px;
+      margin-bottom: 1rem;
     }
 
     .btn {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: .9rem 1.25rem;
-      border: 0;
+      padding: .9rem 1.5rem;
+      border: none;
       border-radius: 999px;
-      font-weight: 700;
       font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      user-select: none;
-      transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-      box-shadow: 0 8px 18px rgba(0,0,0,.12);
-    }
-    .btn:active { transform: translateY(1px) }
-
-    .btn--yes { background: var(--primary); color: white }
-    .btn--no  { background: #111827; color: white }
-    .btn--alt { background: var(--accent); color: white; margin-top: 1rem }
-
-    .floating-heart { position:absolute; inset:0; pointer-events:none; }
-    /* small floating hearts animation */
-    .heart {
-      position: absolute; opacity:.25; font-size: 24px; animation: floatUp 8s linear infinite;
-    }
-    @keyframes floatUp {
-      from { transform: translateY(30px) }
-      to   { transform: translateY(-220px) }
+      transition: transform .2s ease, background .2s ease;
+      position: absolute;
     }
 
-    /* Confetti */
-    .confetti-piece {
-      position: fixed;
-      top: -10px;
-      width: 10px; height: 14px;
-      opacity: 0.95;
-      pointer-events: none;
-      z-index: 9999;
-      will-change: transform;
-      animation: fall linear forwards, spin linear forwards;
+    .btn-yes {
+      background: #ff6f91;
+      color: white;
     }
 
-    @keyframes fall {
-      to { transform: translate3d(var(--x), 100vh, 0) rotate(var(--r)); }
-    }
-    @keyframes spin {
-      to { rotate: 720deg; }
+    .btn-no {
+      background: #6c5ce7;
+      color: white;
     }
 
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.35);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      z-index: 1000;
-    }
-    .modal[open] { display: flex; }
-    .modal-card {
-      background: white;
-      border-radius: 22px;
-      padding: 1.5rem;
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-      box-shadow: var(--shadow);
+    .btn-alt {
+      background: #00b894;
+      color: white;
+      font-size: .95rem;
+      position: relative;
+      margin-top: 1rem;
     }
 
     .success {
-      display: none;
       margin-top: 1rem;
       font-size: 1.2rem;
       font-weight: 700;
+      color: #e84393;
+      display: none;
     }
 
-    @media (max-width: 520px) {
-      .btn-area{ height:180px }
-      .btn{ padding: .8rem 1rem }
+    dialog.modal {
+      border: none;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 14px;
+      background-color: red;
+      opacity: 0.9;
+      animation: fall 3s linear forwards, spin 3s linear;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(100vh) rotate(720deg); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(720deg); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card" id="card">
-      <h1>¿Quieres tener una cita conmigo? 💖</h1>
-      <p class="subtitle">elige sabiamente...</p>
-      <div class="btn-area" id="arena">
-        <button class="btn btn--yes" id="yes1">Sí</button>
-        <button class="btn btn--no" id="no1">No</button>
-        <div class="floating-heart" aria-hidden="true" id="hearts"></div>
-      </div>
+  <div class="card" id="card">
+    <h1>¿Quieres ser mi novia? 💖</h1>
+    <p class="subtitle">elige sabiamente…</p>
 
-      <button class="btn btn--alt" id="openOption2">Opción 2</button>
-      <p class="success" id="successText">¡Sabía que dirías que SÍ GORDOTAAA! 💘</p>
+    <div class="btn-area" id="arena">
+      <button class="btn btn-yes" id="yes1">Sí</button>
+      <button class="btn btn-no" id="no1">No</button>
     </div>
+
+    <button class="btn btn-alt" id="openOption2">Opción 2</button>
+    <p class="success" id="successText">nAnAAnAaa felicidades somos novios 😭💗</p>
+
   </div>
 
   <dialog class="modal" id="option2">
-    <div class="modal-card">
-      <h2>Vale puesh... Opción 2 😅</h2>
-      <p>¿Y ahora? ¿Tendrás una cita conmigo?</p>
-      <div style="display:flex; gap:1rem; justify-content:center; margin:1rem 0;">
-        <button class="btn btn--yes" id="yes2">Sí</button>
-        <button class="btn btn--no" id="no2">No</button>
-      </div>
-      <button class="btn" style="background:#e5e7eb;color:#111" id="close2">Cerrar</button>
+    <h2>Opción 2 😅</h2>
+    <p>¿Ahora sí quieres ser mi novia?</p>
+    <div style="margin:1.5rem 0; position:relative; height:120px;">
+      <button class="btn btn-yes" id="yes2" style="position:relative;">Sí</button>
+      <button class="btn btn-no" id="no2" style="position:absolute; left:160px;">No</button>
     </div>
+    <button class="btn btn-alt" id="close2">Cerrar</button>
   </dialog>
+
+  <div class="confetti" id="confetti"></div>
 
   <script>
     const arena = document.getElementById('arena');
@@ -187,163 +154,94 @@
     const no2 = document.getElementById('no2');
     const close2 = document.getElementById('close2');
     const success = document.getElementById('successText');
+    const confettiContainer = document.getElementById('confetti');
 
-    // Colocar los botones iniciales centrados dentro del contenedor
-    function setInitialPositions(){
+    function setInitialPositions() {
       const rect = arena.getBoundingClientRect();
-      [yes1, no1].forEach((btn, idx) => {
-        const bw = btn.offsetWidth || 96; // estimación si aún no renderiza
-        const bh = btn.offsetHeight || 44;
-        btn.style.position = 'absolute';
-        // Centro, con una pequeña separación horizontal
-        const centerX = rect.width/2 - bw/2 + (idx === 0 ? -70 : 70);
-        const centerY = rect.height/2 - bh/2;
-        btn.style.left = Math.max(6, Math.min(rect.width - bw - 6, centerX)) + 'px';
-        btn.style.top  = Math.max(6, Math.min(rect.height - bh - 6, centerY)) + 'px';
+      const buttons = [yes1, no1];
+      buttons.forEach((btn, i) => {
+        const bw = btn.offsetWidth;
+        const bh = btn.offsetHeight;
+        const centerX = rect.width / 2 - bw / 2 + (i === 0 ? -70 : 70);
+        const centerY = rect.height / 2 - bh / 2;
+        btn.style.left = `${Math.max(6, Math.min(rect.width - bw - 6, centerX))}px`;
+        btn.style.top = `${Math.max(6, Math.min(rect.height - bh - 6, centerY))}px`;
       });
     }
-    // Ejecutar tras pintar la UI
+
     window.addEventListener('load', setInitialPositions);
     window.addEventListener('resize', setInitialPositions);
 
-    // helper to move a button to random spot
-    function moveButton(btn, radius = 140) {
-      const arenaRect = arena.getBoundingClientRect();
+    function moveButton(btn) {
+      const rect = arena.getBoundingClientRect();
       const bw = btn.offsetWidth;
       const bh = btn.offsetHeight;
-
-      // Asegurar posicionamiento absoluto dentro del contenedor
-      btn.style.position = 'absolute';
-
-      // Posición actual relativa al contenedor
-      const currentLeft = parseFloat(btn.style.left || (arenaRect.width/2 - bw - 8));
-      const currentTop  = parseFloat(btn.style.top  || (arenaRect.height/2 - bh/2));
-
-      // Elegir un desplazamiento aleatorio limitado (no tan lejos)
-      const angle = Math.random() * Math.PI * 2;
-      const dist  = Math.random() * radius * 0.6 + radius * 0.15; // entre 15% y 75% del radio
-      let x = currentLeft + Math.cos(angle) * dist;
-      let y = currentTop  + Math.sin(angle) * dist;
-
-      // Limitar a los bordes del contenedor
-      const minX = 6;
-      const minY = 6;
-      const maxX = arenaRect.width - bw - 6;
-      const maxY = arenaRect.height - bh - 6;
-      x = Math.max(minX, Math.min(maxX, x));
-      y = Math.max(minY, Math.min(maxY, y));
-
-      btn.style.left = x + 'px';
-      btn.style.top  = y + 'px';
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = 80;
+      let x = rect.width / 2 + Math.cos(angle) * radius - bw / 2;
+      let y = rect.height / 2 + Math.sin(angle) * radius - bh / 2;
+      x = Math.max(0, Math.min(rect.width - bw, x));
+      y = Math.max(0, Math.min(rect.height - bh, y));
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
     }
 
-    // Evade on hover and on click (for mobile taps)
-    ;[yes1, no1].forEach(btn => {
+    [yes1, no1].forEach(btn => {
       btn.addEventListener('pointerenter', () => moveButton(btn));
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         moveButton(btn);
-        playfulMessage(btn === no1 ? 'No' : 'Sí');
+        showToast(btn === yes1 ? '¡Eh eh! Aún no tan rápido 😜' : '¿Segura? 😏');
       });
     });
 
-    function playfulMessage(which){
-      const messages = {
-        'Sí': ['¡Eh eh! No tan fácil 😜', '¡Atrápame si puedes! 🏃‍♀️', 'Ups, se me resbaló...'],
-        'No': ['¿Segura? 🤔', 'Piénsalo bien... 😏', '¡No acepto un no!']
-      };
-      const msg = messages[which][Math.floor(Math.random()*messages[which].length)];
-      showToast(msg);
-    }
-
-    // Simple toast
-    let toastTimeout;
-    function showToast(text){
+    function showToast(text) {
       let t = document.getElementById('toast');
-      if(!t){
+      if (!t) {
         t = document.createElement('div');
         t.id = 'toast';
-        t.style.cssText = 'position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#111827;color:#fff;padding:.6rem 1rem;border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.15);z-index:9999;font-weight:700;transition:opacity .25s';
+        t.style.cssText = 'position:fixed;left:50%;top:16px;transform:translateX(-50%);background:#333;color:#fff;padding:.6rem 1.2rem;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.2);z-index:9999;font-weight:600;transition:opacity .25s';
         document.body.appendChild(t);
       }
       t.textContent = text;
       t.style.opacity = '1';
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(()=>{ t.style.opacity = '0'; }, 1200);
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => t.style.opacity = '0', 1500);
     }
 
-    // Floating hearts inside arena
-    const heartsWrap = document.getElementById('hearts');
-    const hearts = ['💗','💖','💘','💝','💓'];
-    function spawnHearts(){
-      for(let i=0;i<8;i++){
-        const h = document.createElement('div');
-        h.className = 'heart';
-        h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
-        h.style.left = (Math.random()*90 + 5) + '%';
-        h.style.animationDelay = (Math.random()*4) + 's';
-        h.style.fontSize = (Math.random()*14 + 16) + 'px';
-        heartsWrap.appendChild(h);
-      }
-    }
-    spawnHearts();
+    // Modal
+    open2.addEventListener('click', () => modal2.showModal());
+    close2.addEventListener('click', () => modal2.close());
 
-    // Option 2 modal
-    open2.addEventListener('click', () => {
-      modal2.setAttribute('open','');
-    });
-    close2.addEventListener('click', () => {
-      modal2.removeAttribute('open');
-    });
-    // In option 2, Yes works and triggers confetti
+    // YES2: sí funciona
     yes2.addEventListener('click', () => {
-      modal2.removeAttribute('open');
+      modal2.close();
       success.style.display = 'block';
       launchConfetti();
     });
-    // No in option 2 can still be cheeky
+
+    // NO2: sigue evitando
     no2.addEventListener('pointerenter', () => moveButton(no2));
-    no2.addEventListener('click', (e)=>{ e.preventDefault(); moveButton(no2); showToast('¡Dale al SÍ! 😅'); });
-
-    // Confetti implementation
-    function launchConfetti(){
-      const colors = ['#ff4d6d','#ffd166','#06d6a0','#118ab2','#ef476f','#845ec2'];
-      const pieces = 180;
-      for(let i=0;i<pieces;i++){
-        const c = document.createElement('div');
-        c.className = 'confetti-piece';
-        const size = 6 + Math.random()*8;
-        c.style.width = size + 'px';
-        c.style.height = (size*1.4) + 'px';
-        c.style.left = (Math.random()*100) + 'vw';
-        c.style.background = colors[Math.floor(Math.random()*colors.length)];
-        const dx = (Math.random()*200 - 100) + 'px';
-        const rot = (Math.random()*720 - 360) + 'deg';
-        const dur = (2 + Math.random()*2.5).toFixed(2);
-        c.style.setProperty('--x', dx);
-        c.style.setProperty('--r', rot);
-        c.style.animationDuration = dur + 's, ' + dur + 's';
-        document.body.appendChild(c);
-        setTimeout(()=> c.remove(), dur*1000);
-      }
-      // A celebratory shake
-      document.getElementById('card').animate([
-        { transform: 'scale(1)' },
-        { transform: 'scale(1.03)' },
-        { transform: 'scale(1)' }
-      ], { duration: 400, easing: 'ease-in-out' });
-    }
-
-    // Keep buttons within viewport when window resizes
-    window.addEventListener('resize', () => {
-      [yes1,no1,no2].forEach(btn=>{
-        if(btn.style.position==='fixed'){
-          const rect = btn.getBoundingClientRect();
-          const needsClamp = rect.right > window.innerWidth || rect.bottom > window.innerHeight;
-          if(needsClamp) moveButton(btn);
-        }
-      });
+    no2.addEventListener('click', (e) => {
+      e.preventDefault();
+      moveButton(no2);
+      showToast('¡Dale al SÍ! 😅');
     });
+
+    // Confetti function
+    function launchConfetti() {
+      const colors = ['#ff6f91', '#fcd5ce', '#cdb4db', '#b5ead7', '#ffb3c1'];
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-piece';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.top = `-${Math.random() * 20}px`;
+        confettiContainer.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
   </script>
 </body>
 </html>
+
